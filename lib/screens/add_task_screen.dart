@@ -48,10 +48,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.taskColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
+                width: MediaQuery.of(context).size.width,
+                child: _buildTaskElement(),
               ),
             ),
           ),
@@ -60,15 +58,45 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
                   color: AppColors.taskColor,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
+                child: Image.asset('assets/img/calendar.png'),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildTaskElement() {
+    return ListView.builder(
+      physics: ClampingScrollPhysics(),
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        return Card(
+          color: AppColors.buttonColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: InkWell(
+            onTap: () {},
+            onLongPress: () {},
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width / 4,
+              child: Container(
+                child: Align(child: Text("Proje")),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

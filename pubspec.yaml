@@ -56,6 +56,7 @@ flutter:
     - assets/svg/visibility.svg
     - assets/img/checklist.png
     - assets/img/loginphoto.png
+    - assets/img/calendar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
