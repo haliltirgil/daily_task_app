@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/screens/login_screen.dart';
+import 'package:task_app/screens/show_task_screen.dart';
 import 'package:task_app/theme.dart';
 import 'package:task_app/widgets/button.dart';
 
@@ -36,8 +38,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     SizedBox(height: 6),
                     Text("Mühendis"),
                     Align(
-                        alignment: Alignment.bottomCenter,
-                        child: BuildButton()),
+                      alignment: Alignment.bottomCenter,
+                      child:
+                          buildButton(context, "Görev Ekle", ShowTaskScreen()),
+                    ),
                   ],
                 ),
               ),
