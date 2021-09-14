@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_app/screens/login_screen.dart';
 import 'package:task_app/theme.dart';
 import 'package:task_app/widgets/button.dart';
+import 'package:task_app/widgets/common_profile.dart';
 
 class ShowTaskScreen extends StatefulWidget {
   @override
@@ -15,33 +16,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-          Flexible(
-            flex: 3,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: AppColors.containerColor,
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 70.0),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 50.0,
-                      backgroundImage: NetworkImage(
-                          'https://pbs.twimg.com/media/ERUjP0YXkAEzhn9.jpg'),
-                      backgroundColor: Colors.transparent,
-                    ),
-                    SizedBox(height: 20),
-                    Text("Halil İbrahim Tirgil"),
-                    SizedBox(height: 6),
-                    Text("Mühendis"),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          ProfileLabel(false),
           Flexible(
             flex: 5,
             child: Padding(

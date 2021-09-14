@@ -77,7 +77,6 @@ class _LoginScreenState extends State<LoginScreen> {
               _buildFormElement("Ad Soyad"),
               _buildFormElement("Şifre"),
               _buildLoginButton(),
-              /* buildButton(context, "Giriş Yap", AddTaskScreen()), */
             ],
           ),
         ),
