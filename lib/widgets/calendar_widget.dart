@@ -173,6 +173,8 @@ class _CalendarState extends State<Calendar> {
     return Padding(
       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 35),
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: AppColors.containerColor,
           borderRadius: BorderRadius.circular(12.0),
@@ -189,14 +191,14 @@ class _CalendarState extends State<Calendar> {
                     todayStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 22.0,
-                        color: Colors.red)),
+                        color: AppColors.redColor)),
                 headerStyle: HeaderStyle(
                   centerHeaderTitle: true,
                   formatButtonDecoration: BoxDecoration(
                     color: AppColors.buttonColor,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  formatButtonTextStyle: TextStyle(color: Colors.white),
+                  formatButtonTextStyle: TextStyle(color: AppColors.whiteColor),
                   formatButtonShowsNext: false,
                 ),
                 startingDayOfWeek: StartingDayOfWeek.monday,
@@ -209,7 +211,7 @@ class _CalendarState extends State<Calendar> {
                           borderRadius: BorderRadius.circular(8.0)),
                       child: Text(
                         date.day.toString(),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: AppColors.whiteColor),
                       )),
                   todayDayBuilder: (context, date, events) => Container(
                       margin: const EdgeInsets.all(5.0),
@@ -219,7 +221,7 @@ class _CalendarState extends State<Calendar> {
                           borderRadius: BorderRadius.circular(8.0)),
                       child: Text(
                         date.day.toString(),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: AppColors.whiteColor),
                       )),
                 ),
                 calendarController: _controller,

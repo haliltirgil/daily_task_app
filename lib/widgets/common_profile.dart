@@ -14,36 +14,38 @@ class ProfileLabel extends StatefulWidget {
 class _ProfileLabelState extends State<ProfileLabel> {
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 3,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: AppColors.containerColor,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Padding(
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 12),
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: MediaQuery.of(context).size.height / 16,
-                backgroundImage: NetworkImage(
-                    'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
-                backgroundColor: Colors.transparent,
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height / 40),
-              Text("Halil İbrahim Tirgil"),
-              SizedBox(height: MediaQuery.of(context).size.height / 80),
-              Text("Mühendis"),
-              widget.checkButton == true
-                  ? Align(
-                      alignment: Alignment.bottomCenter,
-                      child: buildButton(context, "Görev Ekle", _addElement),
-                    )
-                  : Container(),
-            ],
+    return SingleChildScrollView(
+      child: Flexible(
+        flex: 3,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: AppColors.containerColor,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 12),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: MediaQuery.of(context).size.height / 16,
+                  backgroundImage: NetworkImage(
+                      'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
+                  backgroundColor: Colors.transparent,
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 40),
+                Text("Halil İbrahim Tirgil"),
+                SizedBox(height: MediaQuery.of(context).size.height / 80),
+                Text("Mühendis"),
+                widget.checkButton == true
+                    ? Align(
+                        alignment: Alignment.bottomCenter,
+                        child: buildButton(context, "Görev Ekle", _addElement),
+                      )
+                    : Container(),
+              ],
+            ),
           ),
         ),
       ),

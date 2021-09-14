@@ -39,7 +39,9 @@ import '../theme.dart';
 
 Padding buildButton(BuildContext context, String text, Function function) {
   return Padding(
-    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 50),
+    padding: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height / 50,
+        bottom: MediaQuery.of(context).size.height / 50),
     child: SizedBox(
       width: MediaQuery.of(context).size.width / 3,
       height: MediaQuery.of(context).size.height / 18,
