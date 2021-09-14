@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/theme.dart';
+import 'package:task_app/widgets/calendar_widget.dart';
 import 'package:task_app/widgets/common_profile.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -27,18 +28,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           ),
           Flexible(
             flex: 4,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                decoration: BoxDecoration(
-                  color: AppColors.taskColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Image.asset('assets/img/calendar.png'),
-              ),
-            ),
+            child: Calendar(),
           ),
         ],
       ),

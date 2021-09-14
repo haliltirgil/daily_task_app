@@ -30,7 +30,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
               CircleAvatar(
                 radius: MediaQuery.of(context).size.height / 16,
                 backgroundImage: NetworkImage(
-                    'https://pbs.twimg.com/media/ERUjP0YXkAEzhn9.jpg'),
+                    'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
                 backgroundColor: Colors.transparent,
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 40),
