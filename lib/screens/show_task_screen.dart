@@ -18,6 +18,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
           Flexible(
             flex: 3,
             child: Container(
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: AppColors.containerColor,
                 borderRadius: BorderRadius.circular(12.0),
@@ -36,10 +37,6 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                     Text("Halil İbrahim Tirgil"),
                     SizedBox(height: 6),
                     Text("Mühendis"),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: buildButton(context, "Görevler", LoginScreen()),
-                    ),
                   ],
                 ),
               ),

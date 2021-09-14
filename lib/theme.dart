@@ -10,6 +10,7 @@ class AppColors {
   static const navbarColor = const Color(0xFF19191F);
   static const whiteColor = const Color(0xFFFFFFFF);
   static const greyColor = const Color(0xFFC4C4C4);
+  static const redColor = const Color(0xFFBB1313);
 }
 
 class IconConstants {

@@ -39,8 +39,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     Text("Mühendis"),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child:
-                          buildButton(context, "Görev Ekle", ShowTaskScreen()),
+                      child: buildButton(context, "Görev Ekle", _addElement),
                     ),
                   ],
                 ),
@@ -101,6 +100,94 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           ),
         );
       },
+    );
+  }
+
+  _dismissDialog() {
+    Navigator.pop(context);
+  }
+
+  void _addElement() {
+    showDialog(
+      builder: (context) => SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+          child: Column(
+            children: [
+              SimpleDialog(
+                backgroundColor: AppColors.whiteColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: Column(
+                  children: [
+                    showDialogContainer("Tarih:"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showDialogContainer("Kategori:"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showDialogContainer("Başlık:"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showDialogContainer("Açıklama:"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    Row(
+                      children: [
+                        _dialogButton("İptal", true),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        _dialogButton("Ekle", false),
+                      ],
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      context: context,
+    );
+  }
+
+  Widget showDialogContainer(String labelText) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 100),
+      child: TextFormField(
+        //controller: valueController,
+        decoration: InputDecoration(
+          fillColor: AppColors.whiteColor,
+          labelText: labelText,
+        ),
+      ),
+    );
+  }
+
+  Widget _dialogButton(String text, bool colorStatus) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 4,
+      height: MediaQuery.of(context).size.height / 20,
+      child: TextButton(
+        onPressed: () {
+          _dismissDialog();
+        },
+        child: Text(
+          text,
+          style: TextStyle(color: AppColors.whiteColor),
+        ),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(12.0),
+              ),
+            ),
+          ),
+          backgroundColor: colorStatus == true
+              ? MaterialStateProperty.all<Color>(AppColors.redColor)
+              : MaterialStateProperty.all<Color>(AppColors.buttonColor),
+        ),
+      ),
     );
   }
 }

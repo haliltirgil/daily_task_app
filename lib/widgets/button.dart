@@ -38,7 +38,7 @@ import '../theme.dart';
 }
  */
 
-Padding buildButton(BuildContext context, String text, Widget route) {
+Padding buildButton(BuildContext context, String text, Function function) {
   return Padding(
     padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 50),
     child: SizedBox(
@@ -59,10 +59,8 @@ Padding buildButton(BuildContext context, String text, Widget route) {
           style: TextStyle(color: AppColors.whiteColor),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => route),
-          );
+          function();
+          print("object");
         },
       ),
     ),

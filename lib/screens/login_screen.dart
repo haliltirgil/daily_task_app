@@ -74,9 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
               EdgeInsets.only(top: MediaQuery.of(context).size.height / 22),
           child: Column(
             children: [
-              _buildFormElement(),
-              _buildFormElement(),
+              _buildFormElement("Ad Soyad"),
+              _buildFormElement("Şifre"),
               _buildLoginButton(),
+              /* buildButton(context, "Giriş Yap", AddTaskScreen()), */
             ],
           ),
         ),
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildFormElement() {
+  Widget _buildFormElement(String text) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -93,10 +94,15 @@ class _LoginScreenState extends State<LoginScreen> {
           color: AppColors.greyColor,
           borderRadius: BorderRadius.circular(12.0),
         ),
-        child: ListTile(
-          leading: Icon(Icons.person),
-          title: Text('Ad Soyad'),
-          trailing: Icon(Icons.visibility),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width / 15),
+          child: TextFormField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              labelText: text,
+            ),
+          ),
         ),
       ),
     );
