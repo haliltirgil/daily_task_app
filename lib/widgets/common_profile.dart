@@ -23,18 +23,19 @@ class _ProfileLabelState extends State<ProfileLabel> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 70.0),
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 12),
           child: Column(
             children: [
               CircleAvatar(
-                radius: 50.0,
+                radius: MediaQuery.of(context).size.height / 16,
                 backgroundImage: NetworkImage(
                     'https://pbs.twimg.com/media/ERUjP0YXkAEzhn9.jpg'),
                 backgroundColor: Colors.transparent,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).size.height / 40),
               Text("Halil İbrahim Tirgil"),
-              SizedBox(height: 6),
+              SizedBox(height: MediaQuery.of(context).size.height / 80),
               Text("Mühendis"),
               widget.checkButton == true
                   ? Align(
@@ -74,7 +75,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
                       children: [
                         _dialogButton("İptal", true),
                         SizedBox(
-                          width: 20,
+                          width: MediaQuery.of(context).size.width / 25,
                         ),
                         _dialogButton("Ekle", false),
                       ],

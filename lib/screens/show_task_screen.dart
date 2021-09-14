@@ -121,7 +121,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
                     showTaskDetail("Proje ara yüz tasarımı yapıldı."),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
-                    _dialogButton("Sil"),
+                    _dialogButton("Çıkış"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
                   ],
                 ),

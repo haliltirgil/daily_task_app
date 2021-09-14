@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 10),
       child: Align(
         child: CircleAvatar(
-          radius: 123,
+          radius: MediaQuery.of(context).size.height / 6,
           backgroundImage: AssetImage('assets/img/loginphoto.png'),
         ),
         alignment: Alignment.center,
