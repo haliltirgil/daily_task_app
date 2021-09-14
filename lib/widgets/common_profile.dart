@@ -41,7 +41,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
                       alignment: Alignment.bottomCenter,
                       child: buildButton(context, "Görev Ekle", _addElement),
                     )
-                  : Container()
+                  : Container(),
             ],
           ),
         ),

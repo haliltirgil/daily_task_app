@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/screens/login_screen.dart';
 import 'package:task_app/theme.dart';
-import 'package:task_app/widgets/button.dart';
 import 'package:task_app/widgets/common_profile.dart';
 
 class ShowTaskScreen extends StatefulWidget {

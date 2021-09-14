@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/screens/add_task_screen.dart';
+import 'package:task_app/screens/show_task_screen.dart';
 
 import '../theme.dart';
 
@@ -61,6 +61,10 @@ Padding buildButton(BuildContext context, String text, Function function) {
         onPressed: () {
           function();
           print("object");
+          /* Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ShowTaskScreen()),
+          ); */
         },
       ),
     ),

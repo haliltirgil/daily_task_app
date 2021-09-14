@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/screens/login_screen.dart';
-import 'package:task_app/screens/show_task_screen.dart';
 import 'package:task_app/theme.dart';
-import 'package:task_app/widgets/button.dart';
 import 'package:task_app/widgets/common_profile.dart';
 
 class AddTaskScreen extends StatefulWidget {
@@ -61,17 +58,104 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              _addElement();
+              print("object");
+            },
             onLongPress: () {},
             child: SizedBox(
               width: MediaQuery.of(context).size.width / 4,
               child: Container(
-                child: Align(child: Text("Proje")),
+                child: Align(
+                  child: Text(
+                    "Proje",
+                    style: TextStyle(
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
         );
       },
     );
+  }
+
+  void _addElement() {
+    showDialog(
+      builder: (context) => SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+          child: Column(
+            children: [
+              SimpleDialog(
+                backgroundColor: AppColors.whiteColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showTaskDetail("Halil İbrahim Tirgil"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showTaskDetail("17.09.2021"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showTaskDetail("15.00 - 16.00"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    showTaskDetail("A Projesi || Diğer"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    showTaskDetail("Proje ara yüz tasarımı yapıldı."),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    _dialogButton("Sil"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      context: context,
+    );
+  }
+
+  Widget showTaskDetail(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: 'Rubik',
+        fontSize: 14,
+      ),
+    );
+  }
+
+  Widget _dialogButton(String text) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 4,
+      height: MediaQuery.of(context).size.height / 20,
+      child: TextButton(
+        onPressed: () {
+          _dismissDialog();
+        },
+        child: Text(
+          text,
+          style: TextStyle(color: AppColors.whiteColor),
+        ),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(12.0),
+              ),
+            ),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(AppColors.redColor),
+        ),
+      ),
+    );
+  }
+
+  _dismissDialog() {
+    Navigator.pop(context);
   }
 }

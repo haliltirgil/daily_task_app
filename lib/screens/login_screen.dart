@@ -2,9 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:task_app/screens/add_task_screen.dart';
-import 'package:task_app/widgets/button.dart';
 import 'package:task_app/theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
