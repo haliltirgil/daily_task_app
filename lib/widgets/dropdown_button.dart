@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:task_app/widgets/dropdown_category.dart';
 
 class Dropdown extends StatefulWidget {
-/*   final String typeOfJob;
-  const Dropdown(this.typeOfJob); */
   @override
   _DropdownState createState() => _DropdownState();
 }
@@ -57,50 +55,3 @@ class _DropdownState extends State<Dropdown> {
     );
   }
 }
-
-
-/* enum TypeofJob { proje, diger }
-
-class RadioButton extends StatefulWidget {
-  RadioButton({Key key}) : super(key: key);
-
-  @override
-  _RadioButtonState createState() => _RadioButtonState();
-}
-
-class _RadioButtonState extends State<RadioButton> {
-  TypeofJob _site = TypeofJob.proje;
-
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          title: const Text('Proje'),
-          leading: Radio(
-            value: TypeofJob.proje,
-            groupValue: _site,
-            onChanged: (TypeofJob value) {
-              setState(() {
-                _site = value;
-                print(_site.toString());
-              });
-            },
-          ),
-        ),
-        ListTile(
-          title: const Text('Diğer'),
-          leading: Radio(
-            value: TypeofJob.diger,
-            groupValue: _site,
-            onChanged: (TypeofJob value) {
-              setState(() {
-                _site = value;
-                print(_site.toString());
-              });
-            },
-          ),
-        ),
-      ],
-    );
-  }
-} */
