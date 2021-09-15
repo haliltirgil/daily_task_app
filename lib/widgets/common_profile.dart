@@ -14,6 +14,7 @@ class ProfileLabel extends StatefulWidget {
 }
 
 class _ProfileLabelState extends State<ProfileLabel> {
+  final List<String> typeOfJob = ['Proje', 'Diğer'];
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -102,7 +103,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
                         onChanged: (value) => () {},
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    SizedBox(height: MediaQuery.of(context).size.height / 80),
                     //------------------------------------------1
                     Row(
                       children: [
@@ -150,19 +151,31 @@ class _ProfileLabelState extends State<ProfileLabel> {
     Navigator.pop(context);
   }
 
-  Widget _dropdownForJobCategory() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 15,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: const BorderRadius.all(
-          const Radius.circular(12.0),
+  /* Widget _dropdownForJobCategory() {         ---*kullanılabilir form*---
+    return Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height / 15,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(12.0),
+            ),
+          ),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width / 25),
+          child: Dropdown(),
         ),
-      ),
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width / 25),
-      child: Dropdown(),
+      ],
+    );
+  } */
+
+  Widget _dropdownForJobCategory() {
+    return Column(
+      children: [
+        Align(alignment: Alignment.centerLeft, child: Dropdown()),
+      ],
     );
   }
 
