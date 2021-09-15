@@ -17,48 +17,46 @@ class _ProfileLabelState extends State<ProfileLabel> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Flexible(
-        flex: 3,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: AppColors.containerColor,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
-            child: Column(
-              children: [
-                widget.checkButton == true
-                    ? Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          icon: Icon(Icons.login_outlined),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      )
-                    : Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height / 25),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height / 2.34,
+        decoration: BoxDecoration(
+          color: AppColors.containerColor,
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Padding(
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
+          child: Column(
+            children: [
+              widget.checkButton == true
+                  ? Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Icon(Icons.login_outlined),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                CircleAvatar(
-                  radius: MediaQuery.of(context).size.height / 16,
-                  backgroundImage: NetworkImage(
-                      'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
-                  backgroundColor: Colors.transparent,
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height / 40),
-                Text("Halil İbrahim Tirgil"),
-                SizedBox(height: MediaQuery.of(context).size.height / 80),
-                Text("Mühendis"),
-                widget.checkButton == true
-                    ? _profileWithButton()
-                    : _profileWithoutButton()
-              ],
-            ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height / 25),
+                    ),
+              CircleAvatar(
+                radius: MediaQuery.of(context).size.height / 16,
+                backgroundImage: NetworkImage(
+                    'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
+                backgroundColor: Colors.transparent,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height / 40),
+              Text("Halil İbrahim Tirgil"),
+              SizedBox(height: MediaQuery.of(context).size.height / 80),
+              Text("Mühendis"),
+              widget.checkButton == true
+                  ? _profileWithButton()
+                  : _profileWithoutButton()
+            ],
           ),
         ),
       ),
@@ -205,7 +203,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
         ),
         Padding(
           padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 20),
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 8.5),
         ),
       ],
     );

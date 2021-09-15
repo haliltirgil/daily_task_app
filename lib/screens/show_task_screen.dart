@@ -16,18 +16,17 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
       body: Column(
         children: [
           ProfileLabel(false),
-          Flexible(
-            flex: 5,
-            child: Padding(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 45),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.containerColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: _buildTaskList("20 Eylül 2021", 5),
+          Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 45),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 1.85,
+              decoration: BoxDecoration(
+                color: AppColors.containerColor,
+                borderRadius: BorderRadius.circular(12.0),
               ),
+              child: _buildTaskList("20 Eylül 2021", 5),
             ),
           ),
         ],

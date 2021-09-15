@@ -17,20 +17,25 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       body: Column(
         children: [
           ProfileLabel(true),
-          Flexible(
-            flex: 1,
-            child: Padding(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: _showTasks(),
-              ),
+          Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 12,
+              child: _showTasks(),
             ),
           ),
-          Flexible(
-            flex: 5,
-            child: Calendar(),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 2.13,
+                  child: Calendar(),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -42,7 +47,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         ? Center(
             child: Container(
             width: MediaQuery.of(context).size.width / 1.05,
-            height: MediaQuery.of(context).size.height / 15,
+            height: MediaQuery.of(context).size.height / 12,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: const BorderRadius.all(
@@ -51,7 +56,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width / 9,
-              vertical: MediaQuery.of(context).size.height / 50,
+              vertical: MediaQuery.of(context).size.height / 40,
             ),
             child: Text(
               "Herhangi bir göreviniz bulunmamaktadır.",
@@ -78,12 +83,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: Container(
-                      child: Align(
-                        child: Text(
-                          "Proje",
-                          style: TextStyle(
-                            color: AppColors.whiteColor,
-                          ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Proje",
+                        style: TextStyle(
+                          color: AppColors.whiteColor,
                         ),
                       ),
                     ),
@@ -141,33 +145,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     );
   }
 
-/* 
-  Widget _dialogButton(String text) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 4,
-      height: MediaQuery.of(context).size.height / 20,
-      child: TextButton(
-        onPressed: () {
-          _dismissDialog();
-        },
-        child: Text(
-          text,
-          style: TextStyle(color: AppColors.whiteColor),
-        ),
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
-              ),
-            ),
-          ),
-          backgroundColor: MaterialStateProperty.all<Color>(AppColors.redColor),
-        ),
-      ),
-    );
-  }
- */
   _dismissDialog() {
     Navigator.pop(context);
   }
