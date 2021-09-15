@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/theme.dart';
+import 'package:task_app/widgets/button.dart';
 import 'package:task_app/widgets/common_profile.dart';
 
 class ShowTaskScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                   color: AppColors.containerColor,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
-                child: _buildTaskList(),
+                child: _buildTaskList("20 Eylül 2021", 5),
               ),
             ),
           ),
@@ -34,31 +35,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
     );
   }
 
-  /* Widget _buildTaskList(String text) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 13.2,
-            decoration: BoxDecoration(
-              color: AppColors.taskColor,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Align(
-              child: Text(
-                text,
-                style: TextStyle(color: AppColors.whiteColor),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
- */
-  Widget _buildTaskList() {
+  Widget _buildTaskList(String text, int hourOfWorking) {
     return Column(
       children: <Widget>[
         ListView.builder(
@@ -73,19 +50,22 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    _addElement();
+                    _showTaskDetailForm();
                     print(index);
                   },
                   onLongPress: () {},
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height / 15,
                     child: Container(
-                      child: Align(
-                        child: Text(
-                          "Proje",
+                      child: ListTile(
+                        title: Text(
+                          text,
+                          style: TextStyle(color: AppColors.whiteColor),
+                        ),
+                        trailing: Text(
+                          hourOfWorking.toString() + " Saat",
                           style: TextStyle(
-                            color: AppColors.whiteColor,
-                          ),
+                              color: AppColors.whiteColor, fontSize: 16),
                         ),
                       ),
                     ),
@@ -97,7 +77,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
     );
   }
 
-  void _addElement() {
+  void _showTaskDetailForm() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -111,17 +91,17 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                 title: Column(
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showTaskDetail("Halil İbrahim Tirgil"),
+                    _taskElementsText("Halil İbrahim Tirgil"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showTaskDetail("17.09.2021"),
+                    _taskElementsText("17.09.2021"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showTaskDetail("15.00 - 16.00"),
+                    _taskElementsText("15.00 - 16.00"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showTaskDetail("A Projesi || Diğer"),
+                    _taskElementsText("A Projesi || Diğer"),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
-                    showTaskDetail("Proje ara yüz tasarımı yapıldı."),
+                    _taskElementsText("Proje ara yüz tasarımı yapıldı."),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
-                    _dialogButton("Çıkış"),
+                    buildButton(context, "Geri", _dismissDialog, true),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
                   ],
                 ),
@@ -134,38 +114,12 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
     );
   }
 
-  Widget showTaskDetail(String text) {
+  Widget _taskElementsText(String text) {
     return Text(
       text,
       style: TextStyle(
         fontFamily: 'Rubik',
         fontSize: 14,
-      ),
-    );
-  }
-
-  Widget _dialogButton(String text) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 4,
-      height: MediaQuery.of(context).size.height / 20,
-      child: TextButton(
-        onPressed: () {
-          _dismissDialog();
-        },
-        child: Text(
-          text,
-          style: TextStyle(color: AppColors.whiteColor),
-        ),
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
-              ),
-            ),
-          ),
-          backgroundColor: MaterialStateProperty.all<Color>(AppColors.redColor),
-        ),
       ),
     );
   }

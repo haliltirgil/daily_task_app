@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:task_app/screens/add_task_screen.dart';
 import 'package:task_app/theme.dart';
+import 'package:task_app/widgets/button.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -74,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               _buildFormElement("Ad Soyad"),
               _buildFormElement("Şifre"),
-              _buildLoginButton(),
+              buildButton(context, "Giriş Yap", routePage, false),
             ],
           ),
         ),
@@ -105,34 +106,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildLoginButton() {
-    return Padding(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 30),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width / 3,
-        height: MediaQuery.of(context).size.height / 18,
-        child: TextButton(
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(AppColors.buttonColor),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-            ),
-          ),
-          child: Text(
-            "Giriş Yap",
-            style: TextStyle(color: AppColors.whiteColor),
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddTaskScreen()),
-            );
-          },
-        ),
-      ),
+  void routePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddTaskScreen()),
     );
   }
 }

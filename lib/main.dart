@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/screens/add_task_screen.dart';
 import 'package:task_app/screens/login_screen.dart';
+import 'package:task_app/screens/show_task_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(), //ShowTaskScreen(),
+      home: ShowTaskScreen(),
     );
   }
 }

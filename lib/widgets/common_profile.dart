@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/screens/show_task_screen.dart';
 
 import '../theme.dart';
 import 'button.dart';
+import 'dropdown_button.dart';
 
 class ProfileLabel extends StatefulWidget {
   final bool checkButton;
@@ -25,9 +27,23 @@ class _ProfileLabelState extends State<ProfileLabel> {
           ),
           child: Padding(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height / 12),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
             child: Column(
               children: [
+                widget.checkButton == true
+                    ? Align(
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                          icon: Icon(Icons.login_outlined),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      )
+                    : Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height / 25),
+                      ),
                 CircleAvatar(
                   radius: MediaQuery.of(context).size.height / 16,
                   backgroundImage: NetworkImage(
@@ -39,11 +55,8 @@ class _ProfileLabelState extends State<ProfileLabel> {
                 SizedBox(height: MediaQuery.of(context).size.height / 80),
                 Text("Mühendis"),
                 widget.checkButton == true
-                    ? Align(
-                        alignment: Alignment.bottomCenter,
-                        child: buildButton(context, "Görev Ekle", _addElement),
-                      )
-                    : Container(),
+                    ? _profileWithButton()
+                    : _profileWithoutButton()
               ],
             ),
           ),
@@ -52,7 +65,7 @@ class _ProfileLabelState extends State<ProfileLabel> {
     );
   }
 
-  void _addElement() {
+  void _addTaskElement() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -65,21 +78,39 @@ class _ProfileLabelState extends State<ProfileLabel> {
                     borderRadius: BorderRadius.circular(15)),
                 title: Column(
                   children: [
-                    showDialogContainer("Tarih:"),
+                    _showDialogElement("Tarih:"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showDialogContainer("Kategori:"),
+                    _showDialogElement("Saat:"),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showDialogContainer("Başlık:"),
-                    SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    showDialogContainer("Açıklama:"),
+                    _dropdownForJobCategory(),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    //-----------------------------------
+                    Container(
+                      padding: EdgeInsets.all(
+                          MediaQuery.of(context).size.height / 100.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors.backgroundColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Lütfen açıklama yazınız...",
+                          border: InputBorder.none,
+                        ),
+                        maxLength: 140,
+                        maxLines: 4,
+                        onChanged: (value) => () {},
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    //------------------------------------------1
                     Row(
                       children: [
-                        _dialogButton("İptal", true),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width / 25,
-                        ),
-                        _dialogButton("Ekle", false),
+                        buildButton(context, "İptal", _dismissDialog, true),
+                        SizedBox(width: MediaQuery.of(context).size.width / 50),
+                        buildButton(context, "Ekle", _dismissDialog, false),
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
@@ -94,13 +125,22 @@ class _ProfileLabelState extends State<ProfileLabel> {
     );
   }
 
-  Widget showDialogContainer(String labelText) {
+  Widget _showDialogElement(String labelText) {
     return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 15,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: const BorderRadius.all(
+          const Radius.circular(12.0),
+        ),
+      ),
       padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width / 100),
+          horizontal: MediaQuery.of(context).size.width / 25),
       child: TextFormField(
         //controller: valueController,
         decoration: InputDecoration(
+          border: InputBorder.none,
           fillColor: AppColors.whiteColor,
           labelText: labelText,
         ),
@@ -108,35 +148,66 @@ class _ProfileLabelState extends State<ProfileLabel> {
     );
   }
 
-  Widget _dialogButton(String text, bool colorStatus) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 4,
-      height: MediaQuery.of(context).size.height / 20,
-      child: TextButton(
-        onPressed: () {
-          _dismissDialog();
-        },
-        child: Text(
-          text,
-          style: TextStyle(color: AppColors.whiteColor),
-        ),
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
-              ),
-            ),
-          ),
-          backgroundColor: colorStatus == true
-              ? MaterialStateProperty.all<Color>(AppColors.redColor)
-              : MaterialStateProperty.all<Color>(AppColors.buttonColor),
+  _dismissDialog() {
+    Navigator.pop(context);
+  }
+
+  Widget _dropdownForJobCategory() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 15,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: const BorderRadius.all(
+          const Radius.circular(12.0),
         ),
       ),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 25),
+      child: Dropdown(),
     );
   }
 
-  _dismissDialog() {
-    Navigator.pop(context);
+  Widget _profileWithButton() {
+    return Row(
+      children: [
+        SizedBox(width: MediaQuery.of(context).size.width / 70),
+        IconButton(
+          icon: Icon(Icons.lightbulb),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        SizedBox(width: MediaQuery.of(context).size.width / 5),
+        buildButton(context, "Görev Ekle", _addTaskElement, false),
+        SizedBox(width: MediaQuery.of(context).size.width / 5),
+        IconButton(
+          icon: Icon(Icons.analytics),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ShowTaskScreen()),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _profileWithoutButton() {
+    return Row(
+      children: [
+        IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        Padding(
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 20),
+        ),
+      ],
+    );
   }
 }

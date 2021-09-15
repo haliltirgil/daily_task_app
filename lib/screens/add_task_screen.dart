@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/theme.dart';
+import 'package:task_app/widgets/button.dart';
 import 'package:task_app/widgets/calendar_widget.dart';
 import 'package:task_app/widgets/common_profile.dart';
 
@@ -19,15 +20,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           Flexible(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: _buildTaskElement(),
+                child: _showTasks(),
               ),
             ),
           ),
           Flexible(
-            flex: 4,
+            flex: 5,
             child: Calendar(),
           ),
         ],
@@ -35,44 +37,64 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     );
   }
 
-  Widget _buildTaskElement() {
-    return ListView.builder(
-      physics: ClampingScrollPhysics(),
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return Card(
-          color: AppColors.buttonColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: InkWell(
-            onTap: () {
-              _addElement();
-              print("object");
-            },
-            onLongPress: () {},
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 4,
-              child: Container(
-                child: Align(
-                  child: Text(
-                    "Proje",
-                    style: TextStyle(
-                      color: AppColors.whiteColor,
+  Widget _showTasks() {
+    return 1 == 0 // gösterirken değişkenle oynamak yeterli.
+        ? Center(
+            child: Container(
+            width: MediaQuery.of(context).size.width / 1.05,
+            height: MediaQuery.of(context).size.height / 15,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: const BorderRadius.all(
+                const Radius.circular(12.0),
+              ),
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width / 9,
+              vertical: MediaQuery.of(context).size.height / 50,
+            ),
+            child: Text(
+              "Herhangi bir göreviniz bulunmamaktadır.",
+              style: TextStyle(color: AppColors.whiteColor, fontSize: 16),
+            ),
+          ))
+        : ListView.builder(
+            physics: ClampingScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Card(
+                color: AppColors.buttonColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    _updateElement();
+                    print("object");
+                  },
+                  onLongPress: () {},
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: Container(
+                      child: Align(
+                        child: Text(
+                          "Proje",
+                          style: TextStyle(
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
   }
 
-  void _addElement() {
+  void _updateElement() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -96,7 +118,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
                     showTaskDetail("Proje ara yüz tasarımı yapıldı."),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
-                    _dialogButton("Sil"),
+                    buildButton(context, "Sil", _dismissDialog, true),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
                   ],
                 ),
@@ -119,6 +141,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     );
   }
 
+/* 
   Widget _dialogButton(String text) {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 4,
@@ -144,7 +167,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       ),
     );
   }
-
+ */
   _dismissDialog() {
     Navigator.pop(context);
   }
