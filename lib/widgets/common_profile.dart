@@ -15,13 +15,13 @@ class CommonProfile extends StatefulWidget {
 }
 
 class _CommonProfileState extends State<CommonProfile> {
-  final List<String> typeOfJob = ['Proje', 'Diğer'];
+  /*  final List<String> typeOfJob = ['Proje', 'Diğer']; */
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 2.34,
+        height: MediaQuery.of(context).size.height / 2.7,
         decoration: BoxDecoration(
           color: AppColors.containerColor,
           borderRadius: BorderRadius.circular(12.0),
@@ -53,8 +53,6 @@ class _CommonProfileState extends State<CommonProfile> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 40),
               Text("Halil İbrahim Tirgil"),
-              SizedBox(height: MediaQuery.of(context).size.height / 80),
-              Text("Mühendis"),
               widget.checkButton == true
                   ? _profileWithButton()
                   : _profileWithoutButton()
@@ -65,7 +63,7 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   }
 
-  void _addTaskElement() {
+  /* void _addTaskElement() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -123,9 +121,9 @@ class _CommonProfileState extends State<CommonProfile> {
       ),
       context: context,
     );
-  }
+  } */
 
-  Widget _showDialogElement(String labelText, bool elementType) {
+  /* Widget _showDialogElement(String labelText, bool elementType) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 15,
@@ -149,10 +147,10 @@ class _CommonProfileState extends State<CommonProfile> {
             ),
     );
   }
-
-  _dismissDialog() {
+ */
+  /* _dismissDialog() {
     Navigator.pop(context);
-  }
+  } */
 
   /* Widget _dropdownForJobCategory() {         ---*kullanılabilir form*---
     return Column(
@@ -174,28 +172,27 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   } */
 
-  Widget _dropdownForJobCategory() {
+/*   Widget _dropdownForJobCategory() {
     return Column(
       children: [
         Align(alignment: Alignment.centerLeft, child: Dropdown()),
       ],
     );
   }
-
+ */
   Widget _profileWithButton() {
     return Row(
       children: [
-        SizedBox(width: MediaQuery.of(context).size.width / 70),
+        SizedBox(width: MediaQuery.of(context).size.width / 90),
         IconButton(
           icon: Icon(Icons.lightbulb),
           onPressed: () {
-            /* Navigator.pop(context); */
-            print("Ampuller patladı kardeşim!");
+            Navigator.pop(context);
           },
         ),
-        SizedBox(width: MediaQuery.of(context).size.width / 5),
-        buildButton(context, "Görev Ekle", _addTaskElement, false),
-        SizedBox(width: MediaQuery.of(context).size.width / 5),
+        SizedBox(width: MediaQuery.of(context).size.width / 3.4),
+        Text("Mühendis"),
+        SizedBox(width: MediaQuery.of(context).size.width / 3.4),
         IconButton(
           icon: Icon(Icons.analytics),
           onPressed: () {
@@ -218,10 +215,10 @@ class _CommonProfileState extends State<CommonProfile> {
             Navigator.pop(context);
           },
         ),
-        Padding(
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 8.5),
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3.2,
         ),
+        Text("Mühendis"),
       ],
     );
   }

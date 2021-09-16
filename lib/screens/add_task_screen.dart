@@ -17,21 +17,21 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       body: Column(
         children: [
           CommonProfile(true),
-          Padding(
+          /*  Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 12,
-              child: _showTasks(),
+              height: MediaQuery.of(context).size.height / 60,
+              /*  child: _showTasks(), */
             ),
-          ),
+          ), */
           SingleChildScrollView(
             child: Column(
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2.13,
+                  height: MediaQuery.of(context).size.height / 1.6,
                   child: Calendar(),
                 ),
               ],
@@ -42,7 +42,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     );
   }
 
-  Widget _showTasks() {
+  /*  Widget _showTasks() {
     return 1 == 0 // gösterirken değişkenle oynamak yeterli.
         ? Center(
             child: Container(
@@ -96,7 +96,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               );
             },
           );
-  }
+  } */
 
   void _updateElement() {
     showDialog(

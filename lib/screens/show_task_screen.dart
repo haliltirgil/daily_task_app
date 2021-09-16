@@ -21,7 +21,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                 EdgeInsets.only(top: MediaQuery.of(context).size.height / 45),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 1.85,
+              height: MediaQuery.of(context).size.height / 1.67,
               decoration: BoxDecoration(
                 color: AppColors.containerColor,
                 borderRadius: BorderRadius.circular(12.0),
