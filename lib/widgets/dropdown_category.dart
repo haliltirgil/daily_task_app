@@ -23,19 +23,19 @@ class _DropdownCategoryState extends State<DropdownCategory> {
   Widget _buildJobDetailDropdown(String text) {
     String value = text;
 
-    var items = [
+    var projectItems = [
       'SVT Projesi',
       'Banana',
       'Grapes',
       'Orange',
-      'İzin',
+      'Yoo',
       'Pineapple'
     ];
 
-    var items1 = [
+    var otherItems = [
       'İzin',
       'Ver',
-      'Calısmak',
+      'Artık',
       'Sıktı',
       'Admin',
       'Kardes',
@@ -55,7 +55,7 @@ class _DropdownCategoryState extends State<DropdownCategory> {
           value: value,
           icon: Icon(Icons.keyboard_arrow_down),
           items: value == 'SVT Projesi'
-              ? items.map((String items) {
+              ? projectItems.map((String items) {
                   return DropdownMenuItem(
                       value: items,
                       child: Padding(
@@ -64,7 +64,7 @@ class _DropdownCategoryState extends State<DropdownCategory> {
                         child: Text(items),
                       ));
                 }).toList()
-              : items1.map((String items) {
+              : otherItems.map((String items) {
                   return DropdownMenuItem(
                       value: items,
                       child: Padding(
