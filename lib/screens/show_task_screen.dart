@@ -92,7 +92,6 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
           child: Column(
             children: [
               SimpleDialog(
-                backgroundColor: AppColors.whiteColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 title: Column(
