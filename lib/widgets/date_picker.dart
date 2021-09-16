@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/theme.dart';
 
 class DatePicker extends StatefulWidget {
   @override
@@ -21,22 +22,13 @@ class _DatePickerState extends State<DatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("DatePicker"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(currentDate.toString()),
-            ElevatedButton(
-              onPressed: () => _selectDate(context),
-              child: Text('Select date'),
-            ),
-          ],
-        ),
-      ),
+    //asyn await yapısı print yani tarihin ne olduğu bilgisini seçildikten sonra almak için kullanıldı
+    return TextButton(
+      onPressed: () async {
+        await _selectDate(context);
+        print(currentDate.toString());
+      },
+      child: Text('Tarih Seçmek İçin Tıklayın'),
     );
   }
 }

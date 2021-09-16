@@ -3,6 +3,7 @@ import 'package:task_app/screens/show_task_screen.dart';
 
 import '../theme.dart';
 import 'button.dart';
+import 'date_picker.dart';
 import 'dropdown_button.dart';
 
 class CommonProfile extends StatefulWidget {
@@ -77,9 +78,9 @@ class _CommonProfileState extends State<CommonProfile> {
                     borderRadius: BorderRadius.circular(15)),
                 title: Column(
                   children: [
-                    _showDialogElement("Tarih:"),
+                    _showDialogElement('', true),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    _showDialogElement("Saat:"),
+                    _showDialogElement("Saat:", false),
                     SizedBox(height: MediaQuery.of(context).size.height / 45),
                     _dropdownForJobCategory(),
                     SizedBox(height: MediaQuery.of(context).size.height / 30),
@@ -124,7 +125,7 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   }
 
-  Widget _showDialogElement(String labelText) {
+  Widget _showDialogElement(String labelText, bool elementType) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 15,
@@ -136,14 +137,16 @@ class _CommonProfileState extends State<CommonProfile> {
       ),
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width / 25),
-      child: TextFormField(
-        //controller: valueController,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          fillColor: AppColors.whiteColor,
-          labelText: labelText,
-        ),
-      ),
+      child: elementType == true
+          ? DatePicker()
+          : TextFormField(
+              //controller: valueController,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                fillColor: AppColors.whiteColor,
+                labelText: labelText,
+              ),
+            ),
     );
   }
 
@@ -186,7 +189,8 @@ class _CommonProfileState extends State<CommonProfile> {
         IconButton(
           icon: Icon(Icons.lightbulb),
           onPressed: () {
-            Navigator.pop(context);
+            /* Navigator.pop(context); */
+            print("Ampuller patladı kardeşim!");
           },
         ),
         SizedBox(width: MediaQuery.of(context).size.width / 5),

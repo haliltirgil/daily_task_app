@@ -38,40 +38,46 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
     return Column(
       children: <Widget>[
         ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Card(
-                color: AppColors.taskColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    _showTaskDetailForm();
-                    print(index);
-                  },
-                  onLongPress: () {},
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height / 15,
-                    child: Container(
-                      child: ListTile(
-                        title: Text(
-                          text,
-                          style: TextStyle(color: AppColors.whiteColor),
-                        ),
-                        trailing: Text(
-                          hourOfWorking.toString() + " Saat",
-                          style: TextStyle(
-                              color: AppColors.whiteColor, fontSize: 16),
-                        ),
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return Card(
+              color: AppColors.taskColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: InkWell(
+                onTap: () {
+                  _showTaskDetailForm();
+                  print(index);
+                },
+                onLongPress: () {},
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 15,
+                  child: Container(
+                    child: ListTile(
+                      title: Text(
+                        text,
+                        style: TextStyle(color: AppColors.whiteColor),
+                      ),
+                      trailing: Text(
+                        hourOfWorking.toString() + " Saat",
+                        style: TextStyle(
+                            color: AppColors.whiteColor, fontSize: 16),
                       ),
                     ),
                   ),
                 ),
-              );
-            })
+              ),
+            );
+          },
+        ),
+        SizedBox(height: MediaQuery.of(context).size.height / 35),
+        Text(
+          "| 1 | 2 | 3 | 4 | 5 |",
+          style: TextStyle(fontSize: 20),
+        ),
       ],
     );
   }

@@ -11,6 +11,7 @@ class AppColors {
   static const whiteColor = const Color(0xFFFFFFFF);
   static const greyColor = const Color(0xFFC4C4C4);
   static const redColor = const Color(0xFFBB1313);
+  static const blackColor = const Color(0xFF000000);
 }
 
 class IconConstants {
