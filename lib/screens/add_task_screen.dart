@@ -16,7 +16,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-          ProfileLabel(true),
+          CommonProfile(true),
           Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),

@@ -5,15 +5,15 @@ import '../theme.dart';
 import 'button.dart';
 import 'dropdown_button.dart';
 
-class ProfileLabel extends StatefulWidget {
+class CommonProfile extends StatefulWidget {
   final bool checkButton;
-  const ProfileLabel(this.checkButton);
+  const CommonProfile(this.checkButton);
 
   @override
-  _ProfileLabelState createState() => _ProfileLabelState();
+  _CommonProfileState createState() => _CommonProfileState();
 }
 
-class _ProfileLabelState extends State<ProfileLabel> {
+class _CommonProfileState extends State<CommonProfile> {
   final List<String> typeOfJob = ['Proje', 'Diğer'];
   @override
   Widget build(BuildContext context) {

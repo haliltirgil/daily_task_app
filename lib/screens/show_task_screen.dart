@@ -15,7 +15,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-          ProfileLabel(false),
+          CommonProfile(false),
           Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height / 45),
