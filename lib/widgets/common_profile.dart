@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_app/helper/theme_provider.dart';
 import 'package:task_app/screens/show_task_screen.dart';
 
 import '../theme.dart';
@@ -23,7 +25,9 @@ class _CommonProfileState extends State<CommonProfile> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height / 2.7,
         decoration: BoxDecoration(
-          color: AppColors.containerColor,
+          border: Border.all(
+            color: AppColors.greyColor,
+          ),
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
@@ -31,20 +35,50 @@ class _CommonProfileState extends State<CommonProfile> {
               EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
           child: Column(
             children: [
-              widget.checkButton == true
-                  ? Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        icon: Icon(Icons.login_outlined),
-                        onPressed: () {
-                          Navigator.pop(context);
+              Padding(
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.height / 200),
+                child: Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width / 10,
+                      height: MediaQuery.of(context).size.height / 22,
+                      child: Consumer(
+                        builder: (context, ThemeModel themeNotifier, child) {
+                          return Container(
+                            child: IconButton(
+                              onPressed: () {
+                                themeNotifier.isDark
+                                    ? themeNotifier.isDark = false
+                                    : themeNotifier.isDark = true;
+                              },
+                              icon: Icon(themeNotifier.isDark
+                                  ? Icons.nightlight_round
+                                  : Icons.wb_sunny),
+                            ),
+                          );
                         },
                       ),
-                    )
-                  : Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 25),
                     ),
+                    SizedBox(width: MediaQuery.of(context).size.width / 1.32),
+                    widget.checkButton == true
+                        ? Container(
+                            width: MediaQuery.of(context).size.width / 10,
+                            height: MediaQuery.of(context).size.height / 22,
+                            child: IconButton(
+                              icon: Icon(Icons.login_outlined),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.only(
+                                top: MediaQuery.of(context).size.height / 25),
+                          ),
+                  ],
+                ),
+              ),
               CircleAvatar(
                 radius: MediaQuery.of(context).size.height / 16,
                 backgroundImage: NetworkImage(
@@ -62,6 +96,15 @@ class _CommonProfileState extends State<CommonProfile> {
       ),
     );
   }
+
+  /*SwitchListTile(
+                    title: Text("Dark Mode"),
+                    onChanged: (val) {
+                      notifier.toggleChangeTheme();
+                      print("bana basıldı ben tema butonuyum ");
+                    },
+                    value: notifier.darkMode,
+                  ), */
 
   /* void _addTaskElement() {
     showDialog(
@@ -183,14 +226,7 @@ class _CommonProfileState extends State<CommonProfile> {
   Widget _profileWithButton() {
     return Row(
       children: [
-        SizedBox(width: MediaQuery.of(context).size.width / 90),
-        IconButton(
-          icon: Icon(Icons.lightbulb),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        SizedBox(width: MediaQuery.of(context).size.width / 3.4),
+        SizedBox(width: MediaQuery.of(context).size.width / 2.4),
         Text("Mühendis"),
         SizedBox(width: MediaQuery.of(context).size.width / 3.4),
         IconButton(

@@ -281,7 +281,9 @@ class _CalendarState extends State<Calendar> {
       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 70),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.containerColor,
+          border: Border.all(
+            color: AppColors.greyColor,
+          ),
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Column(
@@ -297,7 +299,7 @@ class _CalendarState extends State<Calendar> {
                   format = _format;
                 });
               },
-              startingDayOfWeek: StartingDayOfWeek.sunday,
+              startingDayOfWeek: StartingDayOfWeek.monday,
               daysOfWeekVisible: true,
 
               //Day Changed
@@ -420,7 +422,7 @@ class _CalendarState extends State<Calendar> {
                       MediaQuery.of(context).size.height / 100.0),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: AppColors.backgroundColor,
+                      color: AppColors.greyColor,
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -496,7 +498,7 @@ class _CalendarState extends State<Calendar> {
                           MediaQuery.of(context).size.height / 100.0),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: AppColors.backgroundColor,
+                          color: AppColors.greyColor,
                         ),
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -536,7 +538,7 @@ class _CalendarState extends State<Calendar> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 15,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: AppColors.greyColor),
         borderRadius: const BorderRadius.all(
           const Radius.circular(12.0),
         ),

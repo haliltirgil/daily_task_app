@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/theme.dart';
 
 class DropdownCategory extends StatefulWidget {
   //true==Proje
@@ -45,7 +46,7 @@ class _DropdownCategoryState extends State<DropdownCategory> {
       width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 15,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: AppColors.greyColor),
         borderRadius: const BorderRadius.all(
           const Radius.circular(12.0),
         ),

@@ -13,7 +13,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      //backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           CommonProfile(true),

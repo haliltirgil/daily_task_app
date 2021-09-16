@@ -12,7 +12,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      //backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           CommonProfile(false),
@@ -23,7 +23,9 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 1.67,
               decoration: BoxDecoration(
-                color: AppColors.containerColor,
+                border: Border.all(
+                  color: AppColors.greyColor,
+                ),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: _buildTaskList("20 Eylül 2021", 5),

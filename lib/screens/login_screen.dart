@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: AppColors.backgroundColor,
+      //backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Container(
         height: MediaQuery.of(context).size.height / 13.2,
         decoration: BoxDecoration(
-          color: AppColors.greyColor,
+          color: Colors.blueGrey,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(
