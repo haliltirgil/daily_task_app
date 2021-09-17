@@ -1,7 +1,9 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:task_app/theme.dart';
 
 class DatePicker extends StatefulWidget {
+  final String buttonText;
+  const DatePicker(this.buttonText);
   @override
   _DatePickerState createState() => _DatePickerState();
 }
@@ -28,8 +30,10 @@ class _DatePickerState extends State<DatePicker> {
         await _selectDate(context);
         print(currentDate.toString());
       },
-      child: Text('Tarih Seçmek İçin Tıklayın'),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(widget.buttonText),
+      ),
     );
   }
 }
- */

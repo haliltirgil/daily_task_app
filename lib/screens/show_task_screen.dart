@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_app/theme.dart';
 import 'package:task_app/widgets/button.dart';
 import 'package:task_app/widgets/common_profile.dart';
+import 'package:task_app/widgets/date_picker.dart';
 
 class ShowTaskScreen extends StatefulWidget {
   @override
@@ -38,6 +39,33 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
   Widget _buildTaskList(String text, int hourOfWorking) {
     return Column(
       children: <Widget>[
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                "Tarih aralığı:",
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            IconButton(
+              color: AppColors.buttonColor,
+              icon: Icon(Icons.calendar_today_rounded),
+              onPressed: () {
+                _buildTimeLimiterDialog();
+                print("Time Limiter'a basıldı.");
+              },
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width / 2.0),
+            IconButton(
+              color: AppColors.redColor,
+              icon: Icon(Icons.picture_as_pdf_outlined),
+              onPressed: () {
+                print("Pdf'e basıldı.");
+              },
+            ),
+          ],
+        ),
         ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -46,7 +74,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
             return Card(
               color: AppColors.taskColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(12.0),
               ),
               child: InkWell(
                 onTap: () {
@@ -116,6 +144,60 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
         ),
       ),
       context: context,
+    );
+  }
+
+  _buildTimeLimiterDialog() {
+    showDialog(
+      builder: (context) => SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+          child: Column(
+            children: [
+              SimpleDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () {
+                          _dismissDialog();
+                          print("Time Limiter'a basıldı.");
+                        },
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height / 50),
+                    _timeLimiterElement("Başlangıç Tarihi"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 50),
+                    _timeLimiterElement("Bitiş Tarihi"),
+                    buildButton(context, "Seç", _dismissDialog, false),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      context: context,
+    );
+  }
+
+  Widget _timeLimiterElement(String buttonText) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 15,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.greyColor),
+        borderRadius: const BorderRadius.all(
+          const Radius.circular(12.0),
+        ),
+      ),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width / 25),
+      child: DatePicker(buttonText),
     );
   }
 
