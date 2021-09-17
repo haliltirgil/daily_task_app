@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:task_app/models/event_model.dart';
+import 'package:task_app/models/project_event_model.dart';
 
 import '../theme.dart';
 import 'button.dart';
@@ -46,81 +46,83 @@ class _CalendarState extends State<Calendar> {
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
-        child: Column(
-          children: [
-            _buildButton("Görev Ekle", _addTaskElement),
-            TableCalendar(
-              focusedDay: selectedDay,
-              firstDay: DateTime(1990),
-              lastDay: DateTime(2050),
-              calendarFormat: format,
-              onFormatChanged: (CalendarFormat _format) {
-                setState(() {
-                  format = _format;
-                });
-              },
-              startingDayOfWeek: StartingDayOfWeek.monday,
-              daysOfWeekVisible: true,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildButton("Görev Ekle", _addTaskElement),
+              TableCalendar(
+                focusedDay: selectedDay,
+                firstDay: DateTime(1990),
+                lastDay: DateTime(2050),
+                calendarFormat: format,
+                onFormatChanged: (CalendarFormat _format) {
+                  setState(() {
+                    format = _format;
+                  });
+                },
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                daysOfWeekVisible: true,
 
-              //Day Changed
-              onDaySelected: (DateTime selectDay, DateTime focusDay) {
-                setState(() {
-                  selectedDay = selectDay;
-                  focusedDay = focusDay;
-                });
-                print(focusedDay);
-              },
-              selectedDayPredicate: (DateTime date) {
-                return isSameDay(selectedDay, date);
-              },
+                //Day Changed
+                onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                  setState(() {
+                    selectedDay = selectDay;
+                    focusedDay = focusDay;
+                  });
+                  print(focusedDay);
+                },
+                selectedDayPredicate: (DateTime date) {
+                  return isSameDay(selectedDay, date);
+                },
 
-              eventLoader: _getEventsfromDay,
+                eventLoader: _getEventsfromDay,
 
-              //To style the Calendar
-              calendarStyle: CalendarStyle(
-                isTodayHighlighted: true,
-                selectedDecoration: BoxDecoration(
-                  color: AppColors.taskColor,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(5.0),
+                //To style the Calendar
+                calendarStyle: CalendarStyle(
+                  isTodayHighlighted: true,
+                  selectedDecoration: BoxDecoration(
+                    color: AppColors.taskColor,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  selectedTextStyle: TextStyle(color: AppColors.whiteColor),
+                  todayDecoration: BoxDecoration(
+                    color: AppColors.buttonColor,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  defaultDecoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  weekendDecoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  weekendTextStyle: TextStyle(color: AppColors.redColor),
                 ),
-                selectedTextStyle: TextStyle(color: AppColors.whiteColor),
-                todayDecoration: BoxDecoration(
-                  color: AppColors.buttonColor,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                defaultDecoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                weekendDecoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                weekendTextStyle: TextStyle(color: AppColors.redColor),
-              ),
-              headerStyle: HeaderStyle(
-                formatButtonVisible: true,
-                titleCentered: true,
-                formatButtonShowsNext: false,
-                formatButtonDecoration: BoxDecoration(
-                  color: AppColors.buttonColor,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                formatButtonTextStyle: TextStyle(
-                  color: AppColors.whiteColor,
-                ),
-              ),
-            ),
-            ..._getEventsfromDay(selectedDay).map(
-              (ProjectEvent event) => ListTile(
-                title: Text(
-                  event.title,
+                headerStyle: HeaderStyle(
+                  formatButtonVisible: true,
+                  titleCentered: true,
+                  formatButtonShowsNext: false,
+                  formatButtonDecoration: BoxDecoration(
+                    color: AppColors.buttonColor,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  formatButtonTextStyle: TextStyle(
+                    color: AppColors.whiteColor,
+                  ),
                 ),
               ),
-            ),
-          ],
+              ..._getEventsfromDay(selectedDay).map(
+                (ProjectEvent event) => ListTile(
+                  title: Text(
+                    event.title,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
