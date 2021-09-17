@@ -4,7 +4,6 @@ import 'package:task_app/models/event_model.dart';
 
 import '../theme.dart';
 import 'button.dart';
-import 'date_picker.dart';
 import 'dropdown_button.dart';
 
 class Calendar extends StatefulWidget {
@@ -62,6 +61,7 @@ class _CalendarState extends State<Calendar> {
               },
               startingDayOfWeek: StartingDayOfWeek.monday,
               daysOfWeekVisible: true,
+
               //Day Changed
               onDaySelected: (DateTime selectDay, DateTime focusDay) {
                 setState(() {
@@ -80,13 +80,13 @@ class _CalendarState extends State<Calendar> {
               calendarStyle: CalendarStyle(
                 isTodayHighlighted: true,
                 selectedDecoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.taskColor,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                selectedTextStyle: TextStyle(color: Colors.white),
+                selectedTextStyle: TextStyle(color: AppColors.whiteColor),
                 todayDecoration: BoxDecoration(
-                  color: Colors.purpleAccent,
+                  color: AppColors.buttonColor,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
@@ -98,17 +98,18 @@ class _CalendarState extends State<Calendar> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
+                weekendTextStyle: TextStyle(color: AppColors.redColor),
               ),
               headerStyle: HeaderStyle(
                 formatButtonVisible: true,
                 titleCentered: true,
                 formatButtonShowsNext: false,
                 formatButtonDecoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.buttonColor,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 formatButtonTextStyle: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                 ),
               ),
             ),
