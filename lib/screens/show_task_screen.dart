@@ -12,7 +12,6 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           CommonProfile(false),

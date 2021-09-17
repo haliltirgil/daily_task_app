@@ -17,7 +17,6 @@ class CommonProfile extends StatefulWidget {
 }
 
 class _CommonProfileState extends State<CommonProfile> {
-  /*  final List<String> typeOfJob = ['Proje', 'Diğer']; */
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -44,7 +43,7 @@ class _CommonProfileState extends State<CommonProfile> {
                       width: MediaQuery.of(context).size.width / 10,
                       height: MediaQuery.of(context).size.height / 22,
                       child: Consumer(
-                        builder: (context, ThemeModel themeNotifier, child) {
+                        builder: (context, ThemeProvider themeNotifier, child) {
                           return Container(
                             child: IconButton(
                               onPressed: () {
@@ -97,140 +96,14 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   }
 
-  /*SwitchListTile(
-                    title: Text("Dark Mode"),
-                    onChanged: (val) {
-                      notifier.toggleChangeTheme();
-                      print("bana basıldı ben tema butonuyum ");
-                    },
-                    value: notifier.darkMode,
-                  ), */
-
-  /* void _addTaskElement() {
-    showDialog(
-      builder: (context) => SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
-          child: Column(
-            children: [
-              SimpleDialog(
-                backgroundColor: AppColors.whiteColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                title: Column(
-                  children: [
-                    _showDialogElement('', true),
-                    SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    _showDialogElement("Saat:", false),
-                    SizedBox(height: MediaQuery.of(context).size.height / 45),
-                    _dropdownForJobCategory(),
-                    SizedBox(height: MediaQuery.of(context).size.height / 30),
-                    //-----------------------------------
-                    Container(
-                      padding: EdgeInsets.all(
-                          MediaQuery.of(context).size.height / 100.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.backgroundColor,
-                        ),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Lütfen açıklama yazınız...",
-                          border: InputBorder.none,
-                        ),
-                        maxLength: 140,
-                        maxLines: 4,
-                        onChanged: (value) => () {},
-                      ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height / 80),
-                    //------------------------------------------1
-                    Row(
-                      children: [
-                        buildButton(context, "İptal", _dismissDialog, true),
-                        SizedBox(width: MediaQuery.of(context).size.width / 50),
-                        buildButton(context, "Ekle", _dismissDialog, false),
-                      ],
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height / 45),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      context: context,
-    );
-  } */
-
-  /* Widget _showDialogElement(String labelText, bool elementType) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 15,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: const BorderRadius.all(
-          const Radius.circular(12.0),
-        ),
-      ),
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width / 25),
-      child: elementType == true
-          ? DatePicker()
-          : TextFormField(
-              //controller: valueController,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                fillColor: AppColors.whiteColor,
-                labelText: labelText,
-              ),
-            ),
-    );
-  }
- */
-  /* _dismissDialog() {
-    Navigator.pop(context);
-  } */
-
-  /* Widget _dropdownForJobCategory() {         ---*kullanılabilir form*---
-    return Column(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 15,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: const BorderRadius.all(
-              const Radius.circular(12.0),
-            ),
-          ),
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 25),
-          child: Dropdown(),
-        ),
-      ],
-    );
-  } */
-
-/*   Widget _dropdownForJobCategory() {
-    return Column(
-      children: [
-        Align(alignment: Alignment.centerLeft, child: Dropdown()),
-      ],
-    );
-  }
- */
   Widget _profileWithButton() {
     return Row(
       children: [
-        SizedBox(width: MediaQuery.of(context).size.width / 2.4),
+        SizedBox(width: MediaQuery.of(context).size.width / 2.35),
         Text("Mühendis"),
-        SizedBox(width: MediaQuery.of(context).size.width / 3.4),
+        SizedBox(width: MediaQuery.of(context).size.width / 3.65),
         IconButton(
-          icon: Icon(Icons.analytics),
+          icon: Icon(Icons.show_chart),
           onPressed: () {
             Navigator.push(
               context,
@@ -245,15 +118,14 @@ class _CommonProfileState extends State<CommonProfile> {
   Widget _profileWithoutButton() {
     return Row(
       children: [
+        SizedBox(width: MediaQuery.of(context).size.width / 75),
         IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width / 3.2,
-        ),
+        SizedBox(width: MediaQuery.of(context).size.width / 3.2),
         Text("Mühendis"),
       ],
     );

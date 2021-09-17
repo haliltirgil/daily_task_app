@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => ThemeModel(),
-      child: Consumer(builder: (context, ThemeModel themeNotifier, child) {
+      create: (_) => ThemeProvider(),
+      child: Consumer(builder: (context, ThemeProvider themeNotifier, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
-          home: LoginScreen(),
+          home: AddTaskScreen(),
         );
       }),
     );

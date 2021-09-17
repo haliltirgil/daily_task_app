@@ -13,19 +13,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.backgroundColor,
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           CommonProfile(true),
-          /*  Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height / 99),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 60,
-              /*  child: _showTasks(), */
-            ),
-          ), */
           SingleChildScrollView(
             child: Column(
               children: [
@@ -42,63 +33,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     );
   }
 
-  /*  Widget _showTasks() {
-    return 1 == 0 // gösterirken değişkenle oynamak yeterli.
-        ? Center(
-            child: Container(
-            width: MediaQuery.of(context).size.width / 1.05,
-            height: MediaQuery.of(context).size.height / 12,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(12.0),
-              ),
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 9,
-              vertical: MediaQuery.of(context).size.height / 40,
-            ),
-            child: Text(
-              "Herhangi bir göreviniz bulunmamaktadır.",
-              style: TextStyle(color: AppColors.whiteColor, fontSize: 16),
-            ),
-          ))
-        : ListView.builder(
-            physics: ClampingScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Card(
-                color: AppColors.buttonColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    _updateElement();
-                    print("object");
-                  },
-                  onLongPress: () {},
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Proje",
-                        style: TextStyle(
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-  } */
-
-  void _updateElement() {
+  //Takvimin altına eklenen event kısmını düzenlemek için revize edilecek bu fonksiyon.
+  /*  void _updateElement() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -133,7 +69,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       ),
       context: context,
     );
-  }
+  } */
 
   Widget showTaskDetail(String text) {
     return Text(
@@ -143,9 +79,5 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         fontSize: 14,
       ),
     );
-  }
-
-  _dismissDialog() {
-    Navigator.pop(context);
   }
 }

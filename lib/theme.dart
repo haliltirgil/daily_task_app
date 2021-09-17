@@ -13,14 +13,3 @@ class AppColors {
   static const redColor = const Color(0xFFBB1313);
   static const blackColor = const Color(0xFF000000);
 }
-
-class IconConstants {
-  static const String addIcon = 'assets/svg/add.svg';
-  static const String contractIcon = 'assets/svg/contract.svg';
-  static const String groupIcon = 'assets/svg/group.svg';
-  static const String passwordIcon = 'assets/svg/lock.svg';
-  static const String userIcon = 'assets/svg/user.svg';
-  static const String visibilityIcon = 'assets/svg/visibility.svg';
-  static const String loginCheckIcon = 'assets/img/checklist.png';
-  static const String loginIcon = 'assets/img/loginphoto.png';
-}

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/helper/theme_preferences.dart';
 
-class ThemeModel extends ChangeNotifier {
+class ThemeProvider extends ChangeNotifier {
   bool _isDark = false;
   ThemePreferences _preferences = ThemePreferences();
   bool get isDark => _isDark;
 
-  ThemeModel() {
+  ThemeProvider() {
     _isDark = false;
     _preferences = ThemePreferences();
     getPreferences();

@@ -109,7 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
   void routePage() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AddTaskScreen()),
+      MaterialPageRoute(
+        builder: (context) => AddTaskScreen(),
+      ),
     );
   }
 }
