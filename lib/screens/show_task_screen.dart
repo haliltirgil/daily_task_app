@@ -37,77 +37,79 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
   }
 
   Widget _buildTaskList(String text, int hourOfWorking) {
-    return Column(
-      children: <Widget>[
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                "Tarih aralığı:",
-                style: TextStyle(fontSize: 16),
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  "Tarih aralığı:",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
-            ),
-            IconButton(
-              color: AppColors.buttonColor,
-              icon: Icon(Icons.calendar_today_rounded),
-              onPressed: () {
-                _buildTimeLimiterDialog();
-                print("Time Limiter'a basıldı.");
-              },
-            ),
-            SizedBox(width: MediaQuery.of(context).size.width / 2.0),
-            IconButton(
-              color: AppColors.redColor,
-              icon: Icon(Icons.picture_as_pdf_outlined),
-              onPressed: () {
-                print("Pdf'e basıldı.");
-              },
-            ),
-          ],
-        ),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Card(
-              color: AppColors.taskColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                onTap: () {
-                  _showTaskDetailForm();
-                  print(index);
+              IconButton(
+                color: AppColors.buttonColor,
+                icon: Icon(Icons.calendar_today_rounded),
+                onPressed: () {
+                  _buildTimeLimiterDialog();
+                  print("Time Limiter'a basıldı.");
                 },
-                onLongPress: () {},
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 15,
-                  child: Container(
-                    child: ListTile(
-                      title: Text(
-                        text,
-                        style: TextStyle(color: AppColors.whiteColor),
-                      ),
-                      trailing: Text(
-                        hourOfWorking.toString() + " Saat",
-                        style: TextStyle(
-                            color: AppColors.whiteColor, fontSize: 16),
+              ),
+              SizedBox(width: MediaQuery.of(context).size.width / 2.0),
+              IconButton(
+                color: AppColors.redColor,
+                icon: Icon(Icons.picture_as_pdf_outlined),
+                onPressed: () {
+                  print("Pdf'e basıldı.");
+                },
+              ),
+            ],
+          ),
+          ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Card(
+                color: AppColors.taskColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    _showTaskDetailForm();
+                    print(index);
+                  },
+                  onLongPress: () {},
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height / 15,
+                    child: Container(
+                      child: ListTile(
+                        title: Text(
+                          text,
+                          style: TextStyle(color: AppColors.whiteColor),
+                        ),
+                        trailing: Text(
+                          hourOfWorking.toString() + " Saat",
+                          style: TextStyle(
+                              color: AppColors.whiteColor, fontSize: 16),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height / 35),
-        Text(
-          "| 1 | 2 | 3 | 4 | 5 |",
-          style: TextStyle(fontSize: 20),
-        ),
-      ],
+              );
+            },
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 35),
+          Text(
+            "| 1 | 2 | 3 | 4 | 5 |",
+            style: TextStyle(fontSize: 20),
+          ),
+        ],
+      ),
     );
   }
 

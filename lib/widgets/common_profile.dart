@@ -81,14 +81,14 @@ class _CommonProfileState extends State<CommonProfile> {
               CircleAvatar(
                 radius: MediaQuery.of(context).size.height / 16,
                 backgroundImage: NetworkImage(
-                    'https://pbs.twimg.com/media/EhvkTWmXkAEGzjt.jpg'),
+                    'https://pbs.twimg.com/media/ERUjP0YXkAEzhn9.jpg'),
                 backgroundColor: Colors.transparent,
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 40),
               Text("Halil İbrahim Tirgil"),
               widget.checkButton == true
-                  ? _profileWithButton()
-                  : _profileWithoutButton()
+                  ? _profileFormForAddTask()
+                  : _profileFormForShowTask()
             ],
           ),
         ),
@@ -96,7 +96,7 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   }
 
-  Widget _profileWithButton() {
+  Widget _profileFormForAddTask() {
     return Row(
       children: [
         SizedBox(width: MediaQuery.of(context).size.width / 2.35),
@@ -115,7 +115,7 @@ class _CommonProfileState extends State<CommonProfile> {
     );
   }
 
-  Widget _profileWithoutButton() {
+  Widget _profileFormForShowTask() {
     return Row(
       children: [
         SizedBox(width: MediaQuery.of(context).size.width / 75),
@@ -125,7 +125,7 @@ class _CommonProfileState extends State<CommonProfile> {
             Navigator.pop(context);
           },
         ),
-        SizedBox(width: MediaQuery.of(context).size.width / 3.2),
+        SizedBox(width: MediaQuery.of(context).size.width / 3.4),
         Text("Mühendis"),
       ],
     );
