@@ -79,6 +79,10 @@ class _CalendarState extends State<Calendar> {
 
                 //To style the Calendar
                 calendarStyle: CalendarStyle(
+                  markerDecoration: BoxDecoration(
+                    color: AppColors.redColor,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
                   isTodayHighlighted: true,
                   selectedDecoration: BoxDecoration(
                     color: AppColors.taskColor,
@@ -87,7 +91,7 @@ class _CalendarState extends State<Calendar> {
                   ),
                   selectedTextStyle: TextStyle(color: AppColors.whiteColor),
                   todayDecoration: BoxDecoration(
-                    color: AppColors.buttonColor,
+                    color: AppColors.blueColor,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -115,15 +119,70 @@ class _CalendarState extends State<Calendar> {
                 ),
               ),
               ..._getEventsfromDay(selectedDay).map(
-                (ProjectEvent event) => ListTile(
-                  title: Text(
-                    event.title,
+                (ProjectEvent event) => Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width / 20),
+                  child: TextButton(
+                    onPressed: () {
+                      _addTaskElement(); // düzenleme ve silme fonksiyonu olacak. true false ile ayarlanabilir kırmızı buton.
+                      print("Takvimdeki işler butonuna basildı!");
+                    },
+                    child: Text("Proje:" +
+                        " TargeT " +
+                        selectedDay.toString()), //Text(event.title + ' Metin'),
                   ),
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _editTaskDialogBox() {
+    showDialog(
+      builder: (context) => SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+          child: Column(
+            children: [
+              SimpleDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                title: Column(
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    _taskElementsText("Halil İbrahim Tirgil"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    _taskElementsText("17.09.2021"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    _taskElementsText("15.00 - 16.00"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                    _taskElementsText("A Projesi || Diğer"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    _taskElementsText("Proje ara yüz tasarımı yapıldı."),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
+                    buildButton(context, "Geri", _dismissDialog, true),
+                    SizedBox(height: MediaQuery.of(context).size.height / 45),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      context: context,
+    );
+  }
+
+  Widget _taskElementsText(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: 'Rubik',
+        fontSize: 14,
       ),
     );
   }
@@ -195,7 +254,8 @@ class _CalendarState extends State<Calendar> {
                     maxLength: 140,
                     maxLines: 4,
                     onChanged: (value) => () {},
-                    controller: _eventController,
+                    controller:
+                        _eventController, //takvimdeki listede görünen metnin controlleri
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 80),

@@ -28,7 +28,8 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                 ),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: _buildTaskList("20 Eylül 2021", 5),
+              child: _buildTaskList(
+                  "20 Eylül 2021    " + "  Proje:" + " TargeT", 5),
             ),
           ),
         ],
@@ -42,7 +43,26 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
         children: <Widget>[
           Row(
             children: [
-              Padding(
+              TextButton(
+                onPressed: () {
+                  _buildTimeLimiterDialog();
+                  print("Time Limiter'a basıldı.");
+                },
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Tarih aralığı:",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width / 90),
+                    Icon(Icons.calendar_today_rounded),
+                  ],
+                ),
+              ),
+              /*  Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
                   "Tarih aralığı:",
@@ -56,7 +76,7 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                   _buildTimeLimiterDialog();
                   print("Time Limiter'a basıldı.");
                 },
-              ),
+              ), */
               SizedBox(width: MediaQuery.of(context).size.width / 2.0),
               IconButton(
                 color: AppColors.redColor,

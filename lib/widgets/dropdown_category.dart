@@ -35,11 +35,11 @@ class _DropdownCategoryState extends State<DropdownCategory> {
 
     var otherItems = [
       'İzin',
-      'Ver',
-      'Artık',
-      'Sıktı',
-      'Admin',
-      'Kardes',
+      'Toplantı',
+      'Tatil',
+      'Seminer/Eğitim',
+      'YL/Doktora',
+      'Diğer',
     ];
 
     return Container(
