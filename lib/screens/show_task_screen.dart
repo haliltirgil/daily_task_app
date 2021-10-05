@@ -187,14 +187,35 @@ class _ShowTaskScreenState extends State<ShowTaskScreen> {
                         icon: Icon(Icons.arrow_back_ios),
                         onPressed: () {
                           _dismissDialog();
-                          print("Time Limiter'a basıldı.");
+                          print("Geri tuşuna basıldı");
                         },
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height / 50),
                     _timeLimiterElement("Başlangıç Tarihi"),
                     SizedBox(height: MediaQuery.of(context).size.height / 50),
+                    Container(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 50),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Seçilen Tarih: YYYY/MM/DD",
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height / 50),
                     _timeLimiterElement("Bitiş Tarihi"),
+                    SizedBox(height: MediaQuery.of(context).size.height / 50),
+                    Container(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 50),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Seçilen Tarih: YYYY/MM/DD",
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height / 50),
                     buildButton(context, "Seç", _dismissDialog, false),
                   ],
                 ),

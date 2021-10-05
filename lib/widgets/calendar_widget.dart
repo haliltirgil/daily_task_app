@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:task_app/models/project_event_model.dart';
+import 'package:intl/intl.dart';
 
 import '../theme.dart';
 import 'button.dart';
@@ -119,18 +120,33 @@ class _CalendarState extends State<Calendar> {
                 ),
               ),
               ..._getEventsfromDay(selectedDay).map(
-                (ProjectEvent event) => Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width / 20),
-                  child: TextButton(
-                    onPressed: () {
-                      _addTaskElement(); // düzenleme ve silme fonksiyonu olacak. true false ile ayarlanabilir kırmızı buton.
-                      print("Takvimdeki işler butonuna basildı!");
-                    },
-                    child: Text("Proje:" +
-                        " TargeT " +
-                        selectedDay.toString()), //Text(event.title + ' Metin'),
+                (ProjectEvent event) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.greyColor),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0),
+                      ),
+                    ),
+                    alignment: Alignment.centerLeft,
+                    child: ListTile(
+                      onTap: () {
+                        _addTaskElement();
+                      },
+                      title: Text("Proje:" +
+                          " TargeT " +
+                          DateFormat("dd.MM.yyyy").format(selectedDay)),
+                      trailing: IconButton(
+                          icon: Icon(
+                            Icons.delete,
+                            color: AppColors.redColor,
+                          ),
+                          onPressed: () {
+                            print("Takvimdeki görev silinmek isteniyor");
+                            _addTaskElement();
+                          }),
+                    ),
                   ),
                 ),
               ),
@@ -141,7 +157,7 @@ class _CalendarState extends State<Calendar> {
     );
   }
 
-  void _editTaskDialogBox() {
+  /* void _editTaskDialogBox() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -175,9 +191,9 @@ class _CalendarState extends State<Calendar> {
       ),
       context: context,
     );
-  }
+  } */
 
-  Widget _taskElementsText(String text) {
+/*   Widget _taskElementsText(String text) {
     return Text(
       text,
       style: TextStyle(
@@ -186,7 +202,7 @@ class _CalendarState extends State<Calendar> {
       ),
     );
   }
-
+ */
   Widget _buildButton(String text, Function function) {
     return Padding(
       padding: EdgeInsets.only(
@@ -259,7 +275,6 @@ class _CalendarState extends State<Calendar> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height / 80),
-
                 //------------------------------------------1
                 Row(
                   children: [
@@ -285,6 +300,7 @@ class _CalendarState extends State<Calendar> {
           ProjectEvent(title: _eventController.text),
         );
       } else {
+        //selectedEvents[selectedDay].remove(value) silmek için kullanılabilir.
         selectedEvents[selectedDay] = [
           ProjectEvent(title: _eventController.text)
         ];

@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               _buildFormElement("Ad Soyad"),
-              _buildFormElement("Şifre"),
+              _buildFormElement("Parola"),
               buildButton(context, "Giriş Yap", routePage, false),
             ],
           ),
