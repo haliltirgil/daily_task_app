@@ -144,7 +144,7 @@ class _CalendarState extends State<Calendar> {
                           ),
                           onPressed: () {
                             print("Takvimdeki görev silinmek isteniyor");
-                            _addTaskElement();
+                            _editTaskDialogBox();
                           }),
                     ),
                   ),
@@ -157,7 +157,7 @@ class _CalendarState extends State<Calendar> {
     );
   }
 
-  /* void _editTaskDialogBox() {
+  void _editTaskDialogBox() {
     showDialog(
       builder: (context) => SingleChildScrollView(
         child: Padding(
@@ -191,9 +191,9 @@ class _CalendarState extends State<Calendar> {
       ),
       context: context,
     );
-  } */
+  }
 
-/*   Widget _taskElementsText(String text) {
+  Widget _taskElementsText(String text) {
     return Text(
       text,
       style: TextStyle(
@@ -202,7 +202,7 @@ class _CalendarState extends State<Calendar> {
       ),
     );
   }
- */
+
   Widget _buildButton(String text, Function function) {
     return Padding(
       padding: EdgeInsets.only(

@@ -4,7 +4,7 @@ import 'package:task_app/models/validation_model.dart';
 class SignInValidation with ChangeNotifier {
   ValidationItem _email = ValidationItem(null, null);
   ValidationItem _password = ValidationItem(null, null);
-  ValidationItem _name = ValidationItem(null, null);
+  ValidationItem _userID = ValidationItem(null, null);
   ValidationItem _surname = ValidationItem(null, null);
   ValidationItem _fieldOfStudy = ValidationItem(null, null);
   String _emailType = '@ogr.ktu.edu.tr';
@@ -14,7 +14,7 @@ class SignInValidation with ChangeNotifier {
   ValidationItem get password => _password;
   String get emailtype => _emailType;
   bool get toggleLoginLogout => _toggleLoginLogout;
-  ValidationItem get name => _name;
+  ValidationItem get userID => _userID;
   ValidationItem get surname => _surname;
   ValidationItem get fieldOfStudy => _fieldOfStudy;
 
@@ -30,11 +30,12 @@ class SignInValidation with ChangeNotifier {
     notifyListeners();
   }
 
-  void setName(String value) {
-    if (RegExp(r'^[a-zA-Z]+(\s[a-zA-Z]+)?$').hasMatch(value)) {
-      _name = ValidationItem(value, null);
+  void setUserID(String value) {
+    if (RegExp(r'^[^0-9]", ""').hasMatch(value)) {
+      _userID = ValidationItem(value, null);
     } else {
-      _name = ValidationItem(null, 'İsimde sadece karakter olabilir');
+      _userID =
+          ValidationItem(null, 'Kullanıcı kimliği sadece sayı içermelidir.');
     }
     notifyListeners();
   }
@@ -77,7 +78,7 @@ class SignInValidation with ChangeNotifier {
     // To reset the fields when toggling
     _email = ValidationItem(null, null);
     _password = ValidationItem(null, null);
-    _name = ValidationItem(null, null);
+    _userID = ValidationItem(null, null);
     _surname = ValidationItem(null, null);
     _fieldOfStudy = ValidationItem(null, null);
 

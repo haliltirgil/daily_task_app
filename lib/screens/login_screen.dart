@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               EdgeInsets.only(top: MediaQuery.of(context).size.height / 22),
           child: Column(
             children: [
-              _buildFormElement("Ad Soyad"),
+              _buildFormElement("Kullanıcı Kimliği"),
               _buildFormElement("Parola"),
               buildButton(context, "Giriş Yap", routePage, false),
             ],

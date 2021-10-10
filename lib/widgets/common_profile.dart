@@ -81,7 +81,7 @@ class _CommonProfileState extends State<CommonProfile> {
               CircleAvatar(
                 radius: MediaQuery.of(context).size.height / 16,
                 backgroundImage: NetworkImage(
-                    'https://pbs.twimg.com/media/ERUjP0YXkAEzhn9.jpg'),
+                    'https://0.academia-photos.com/82870230/21026662/20521130/s200_halil_i_brahim.tirgil.jpg'),
                 backgroundColor: Colors.transparent,
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 40),
